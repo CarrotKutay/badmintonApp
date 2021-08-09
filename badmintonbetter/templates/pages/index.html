@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="card text-center">
+    <div class="card-body">
+        <h1>Welcome to BadmintonBetter</h1>
+        <p>This is a Badminton Betting and Polling App</p>
+        <a href="{% url 'core:index' %}" class="btn btn-dark">View available bets and polls</a>
+    </div>
+
+    <div class="card-body btn">
+        <a href="{% url 'core:extend_menu' %}">
+            <img src="{% static 'images/add-information.png' %}" style="width: 128px; height: 128px;">
+            <p>Extend Database</p>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

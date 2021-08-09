@@ -1,0 +1,58 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container">
+        <a href="/" class="navbar-brand col self-align-start">BadmintonBetter</a>
+    </div>
+    <div class="me-3">
+        {% load static %}
+        {% if user.is_authenticated %}
+        <div class="d-flex self-align-end">
+            <p class="navbar-brand">Welcome, {{user.username}}!</p>
+            <div class="navbar-brand dropdown btn-group" id="profile">
+                <button class="btn dropdown dropdown-toggle" type="button" id="profile-dropdown-menu"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <svg width="32" height="32" fill="currentColor">
+                        <use href="{% static 'images/icons/bootstrap-icons.svg' %}#person"/>
+                    </svg>
+                    Profile
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end"
+                    aria-labelledby="profile-dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Personal data</a></li>
+                    <li><a class="dropdown-item" href="#">Actions</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item btn" type="button" data-bs-toggle="modal"
+                           data-bs-target="#logout-modal" aria-hidden="true">
+                        Logout</a></li>
+                </ul>
+            </div>
+        </div>
+
+        {% else %}
+            <div id="login">
+                <a href="{% url 'core:login' %}" class="navbar-brand btn" type="button" data-bs-toggle="">
+                    Login
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</nav>
+
+
+<!--    logout modal    -->
+<div class="modal fade" tabindex="-1" id="logout-modal" aria-labelledby="logout-modal-label">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Logout</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Do you really wish to logout?</p>
+      </div>
+      <div class="modal-footer">
+          <a class="btn btn-primary" href="{% url 'core:logout' %}" role="button">Ok</a>
+          <button type="button" class="btn btn-secondary">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

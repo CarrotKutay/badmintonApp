@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="central">
+    <h1>Disciplines</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+            </tr>
+      </thead>
+      <tbody>
+        {% for discipline in disciplines %}
+        <tr>
+          <th scope="row">{{discipline.id}}</th>
+          <td>{{discipline.name}}</td>
+            <td>{{discipline.description}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

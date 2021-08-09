@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center mb-3">Latest Events</h1>
+    {% if latest_question_list %}
+        {% for question in latest_question_list %}
+            <div class="card border border-0 border-start border-3 border-success mb-3">
+                <div class="card-body">
+                    <div class="card-header flex-shrink-1 mb-2 btn float-right border-2"
+                        role="button"
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#collapseChoices{{question.id}}"
+                        aria-expanded="true"
+                        aria-controls="collapseChoices{{question.id}}">
+                        <p class="lead">{{ question.question_text }}</p>
+                    </div>
+                    
+                    <div class="container mb-3 collapse show" id="collapseChoices{{question.id}}">
+                        <h5 class="card-title">Current standings:</h5>
+                        <ol class="list-group list-group-numbered">
+                            <!-- Display mayor choice options for core currently available.
+                                Coices displayed will be in reversed order (highest first)
+                                and only the top 3 will be shown -->
+                            <!--
+                                TODO: might be easier and more efficient for large polls and core to pre-design to only get top 3 choices from request in the first place
+                            -->
+                            {% for choice in question.choice_set.all|dictsortreversed:"votes"|slice:":3" %}
+                                <li class="list-group-item">{{choice.choice_text}}</li>
+                            {% endfor %}
+                        </ol>
+                    </div>
+
+                    <a href="{% url 'core:detail' question.id %}" class="btn btn-primary btn-sm">Vote now</a>
+                    <a href="{% url 'core:results' question.id %}" class="btn btn-secondary btn-sm">Results</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No bets available</p>
+    {% endif %}
+{% endblock %}

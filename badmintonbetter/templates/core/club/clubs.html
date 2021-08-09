@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="central">
+    <h1>Clubs</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Abbreviation</th>
+            </tr>
+      </thead>
+      <tbody>
+        {% for club in clubs %}
+        <tr>
+          <th scope="row">{{club.id}}</th>
+          <td>{{club.name}}</td>
+            <td>{{club.name_abbrev}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

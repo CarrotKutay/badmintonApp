@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="central">
+    <h1>Players</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Lastname</th>
+                <th scope="col">Firstname</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Disciplin</th>
+            </tr>
+      </thead>
+      <tbody>
+        {% for player in players %}
+        <tr>
+          <th scope="row">{{player.id}}</th>
+          <td>{{player.lastname}}</td>
+            <td>{{player.firstname}}</td>
+            <td>{{player.dob}}</td>
+            <td>{{player.participation}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+{% endblock %}

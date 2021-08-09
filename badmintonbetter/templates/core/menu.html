@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="list-group">
+        <a aria-controls="player-crud" aria-current="true" aria-expanded="false"
+           class="list-group-item list-group-item-action"
+           data-bs-toggle="collapse" href="#player-crud"
+           role="button">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Players</h5>
+              <small>total: {{ player_total }}</small>
+            </div>
+            <p class="mb-1 small">A player defines a data model related to all the relevant information required of
+            and for an sports athlete</p>
+        </a>
+        <p class="mb-1 collapse" id="player-crud">
+            <a class="small" href="{% url 'core:add-player' %}">Create</a>
+            <a class="small" href="">Update</a>
+            <a class="small" href="">Delete</a>
+        </p>
+
+        <a aria-controls="event-crud" aria-current="true" aria-expanded="false"
+           class="list-group-item list-group-item-action"
+           data-bs-toggle="collapse" href="#event-crud"
+           role="button">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Events</h5>
+              <small>total: {{ event_total }}</small>
+            </div>
+            <p class="mb-1 small">Events can be any data model representing an event, e.g. a long-time seasonal
+                league or a specific one-time tournament</p>
+        </a>
+        <p class="mb-1 collapse" id="event-crud">
+            <a class="small" href="{% url 'core:add-event' %}">Create</a>
+            <a class="small" href="">Update</a>
+            <a class="small" href="">Delete</a>
+        </p>
+
+        <a aria-controls="sport-crud" aria-current="true" aria-expanded="false"
+           class="list-group-item list-group-item-action"
+           data-bs-toggle="collapse" href="#sport-crud"
+           role="button">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Sports</h5>
+              <small>total: {{ sport_total }}</small>
+            </div>
+            <p class="mb-1 small">Represents a specific sport type including all the disciplines it contains</p>
+        </a>
+        <p class="mb-1 collapse" id="sport-crud">
+            <a class="small" href="{% url 'core:add-sport' %}">Create</a>
+            <a class="small" href="">Update</a>
+            <a class="small" href="">Delete</a>
+        </p>
+
+        <a aria-controls="discipline-crud" aria-current="true" aria-expanded="false"
+           class="list-group-item list-group-item-action"
+           data-bs-toggle="collapse" href="#discipline-crud"
+           role="button">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Disciplines</h5>
+              <small>total: {{ discipline_total }}</small>
+            </div>
+            <p class="mb-1 small">Model to display all necessary disciplines of one sport</p>
+        </a>
+        <p class="mb-1 collapse" id="discipline-crud">
+            <a class="small" href="{% url 'core:add-discipline' %}">Create</a>
+            <a class="small" href="">Update</a>
+            <a class="small" href="">Delete</a>
+        </p>
+
+        <a aria-controls="club-crud" aria-current="true" aria-expanded="false"
+           class="list-group-item list-group-item-action"
+           data-bs-toggle="collapse" href="#club-crud"
+           role="button">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">Clubs</h5>
+              <small>total: {{ club_total }}</small>
+            </div>
+            <p class="mb-1 small">Club model grouping players together belonging to the same club. Information such as
+                name, abbreviation and members will be stored</p>
+        </a>
+        <p class="mb-1 collapse" id="club-crud">
+            <a class="small" href="{% url 'core:add-club' %}">Create</a>
+            <a class="small" href="">Update</a>
+            <a class="small" href="">Delete</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}
