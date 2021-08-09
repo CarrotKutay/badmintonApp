@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ discipline.name }}</h1>
+  <p class="text-muted">{{ discipline.sport.name }}</p>
+  <details>
+      <summary>Ranking</summary>
+      {% for participant in discipline.participants.all %}
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{ participant.name }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ participant.age }} years old</h6>
+              </div>
+            </div>
+      {% endfor %}
+  </details>
+{% endblock %}

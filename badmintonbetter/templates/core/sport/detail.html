@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>{{ sport.name }}</h1>
+    {% if sport.olympic %}
+        <p class="text-muted">Olympic Sport</p>
+    {% endif %}
+  <details>
+      <summary>Disciplines</summary>
+      {% for discipline in sport.disciplines.all %}
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{ discipline.name }}</h5>
+                <p class="card-text">
+                    {{ discipline.description }}
+                </p>
+              </div>
+            </div>
+      {% endfor %}
+  </details>
+{% endblock %}
